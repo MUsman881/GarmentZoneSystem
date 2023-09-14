@@ -18,6 +18,7 @@ namespace GarmentZone.Screens
         SqlCommand cmd = new SqlCommand();
         DbConnection db = new DbConnection();
         SqlDataReader dr;
+
         public string _password;
         public bool _isactive = false;
 
@@ -101,7 +102,6 @@ namespace GarmentZone.Screens
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {

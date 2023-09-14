@@ -90,7 +90,7 @@ namespace GarmentZone.Screens
         {
             if (MessageBox.Show("LOGOUT APPLICATION?", "CONFIRM", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                this.Hide();
+                this.Dispose();
                 Login frm = new Login();
                 frm.ShowDialog();
             }
@@ -200,6 +200,11 @@ namespace GarmentZone.Screens
         }
 
         private void panelblock_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblUser = new System.Windows.Forms.Label();
             this.btnAdjustment = new System.Windows.Forms.Button();
@@ -114,6 +114,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(256, 644);
             this.panel2.TabIndex = 3;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // lblUser
             // 
@@ -566,7 +567,9 @@
             this.panel4.Controls.Add(this.lblDailySales);
             this.panel4.Controls.Add(this.groupBox1);
             this.panel4.Controls.Add(this.pictureBox2);
+            this.panel4.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.panel4.ForeColor = System.Drawing.Color.White;
             this.panel4.Location = new System.Drawing.Point(13, 10);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(207, 80);
@@ -623,16 +626,16 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea8.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chart1.Legends.Add(legend8);
             this.chart1.Location = new System.Drawing.Point(7, 137);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chart1.Series.Add(series8);
             this.chart1.Size = new System.Drawing.Size(1022, 492);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -661,6 +664,7 @@
             this.Name = "Dashboard";
             this.Resizable = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.Style = MetroFramework.MetroColorStyle.Green;
             this.Load += new System.EventHandler(this.Dashboard_Load);
             this.Resize += new System.EventHandler(this.Dashboard_Resize);
             this.panel2.ResumeLayout(false);

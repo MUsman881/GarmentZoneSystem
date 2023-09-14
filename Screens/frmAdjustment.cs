@@ -20,6 +20,7 @@ namespace GarmentZone.Screens
         DbConnection db = new DbConnection();
         Dashboard f;
         int _qty;
+
         public frmAdjustment(Dashboard frm)
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace GarmentZone.Screens
         {
             Random rnd = new Random();
             txtRef.Text = rnd.Next().ToString();
-
         }
 
         public void LoadProducts()

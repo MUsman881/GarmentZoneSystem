@@ -48,7 +48,7 @@ namespace GarmentZone.Screens
             con.Open();
             cmd = new SqlCommand("select p.pcode, p.pname, p.barcode, p.pdesc, b.brand, c.category, v.vendor, p.price, p.reorder from tblProduct as p inner join tblBrand as b on b.id = p.bid inner join tblCategory as c on c.id = p.cid inner join tblVendor as v on v.id = p.vendorid  where p.pname like '" + txtSearch.Text + "%'", con);
             dr = cmd.ExecuteReader();
-            while (dr.Read())
+            while(dr.Read())
             {
                 i += 1;
                 dataGridView1.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString(), dr[7].ToString(), dr[8].ToString());
@@ -65,6 +65,7 @@ namespace GarmentZone.Screens
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+
             if (colName == "Edit")
             {
                 frmProduct frm = new frmProduct(this);
@@ -79,7 +80,6 @@ namespace GarmentZone.Screens
                 frm.cboVendor.Text = dataGridView1.Rows[e.RowIndex].Cells[7].Value.ToString();
                 frm.price.Text = dataGridView1.Rows[e.RowIndex].Cells[8].Value.ToString();
                 frm.txtReorder.Text = dataGridView1.Rows[e.RowIndex].Cells[9].Value.ToString();
-
                 frm.ShowDialog();
             }
             else if (colName == "Delete")
@@ -94,6 +94,11 @@ namespace GarmentZone.Screens
                     LoadProducts();
                 }
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
