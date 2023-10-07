@@ -45,6 +45,7 @@ namespace GarmentZone.Screens
             int i = 0;
 
             dataGridView1.Rows.Clear();
+
             con.Open();
             cmd = new SqlCommand("select p.pcode, p.pname, p.barcode, p.pdesc, b.brand, c.category, v.vendor, p.price, p.reorder from tblProduct as p inner join tblBrand as b on b.id = p.bid inner join tblCategory as c on c.id = p.cid inner join tblVendor as v on v.id = p.vendorid  where p.pname like '" + txtSearch.Text + "%'", con);
             dr = cmd.ExecuteReader();
@@ -84,14 +85,33 @@ namespace GarmentZone.Screens
             }
             else if (colName == "Delete")
             {
-                if (MessageBox.Show("Are you sure you want to delete this product?", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                try
                 {
-                    con.Open();
-                    cmd = new SqlCommand("delete from tblProduct where pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
-                    cmd.ExecuteNonQuery();
+                    if (MessageBox.Show("Are you sure you want to delete this product?", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        con.Open();
+                        cmd = new SqlCommand("delete from tblCart where pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        con.Open();
+                        cmd = new SqlCommand("delete from tblStockIn where pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        con.Open();
+                        cmd = new SqlCommand("delete from tblProduct where pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+
+                        MessageBox.Show("Product has been delete successfully.", "Garments Zone", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadProducts();
+                    }
+                }
+                catch(Exception ex)
+                {
                     con.Close();
-                    MessageBox.Show("Category has been delete successfully.", "Garments Zone", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadProducts();
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

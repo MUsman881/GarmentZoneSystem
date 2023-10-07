@@ -118,6 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnCustomer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1
+        MAAA6mAAADqYAAAXcJy6UTwAAAAHdElNRQfnCAUQECCtsauAAAABKUlEQVQ4T63RMS9DYRTG8dvB3KVW
+        ScNiaCcDErOBD1AkBoNgYWBoDB06dDXwARCJxC5ia4IPYBKJig/AICbC9X/ec25z7xuppU/yS0/Oe95z
+        b26ToSVN0zqOXc3b/fj5iat720JjFG/I8oqKH+u84r0shXMNLIZ2MfOoYRZz+EE+C349LBjHV2hbLnFo
+        Zcgt2laGfKLq1y00lvGIJywhzgYeoJmGXwsXS9jCHXRZNBxnB9m5ZjdR0oI9xLnAqZUh99i3spBdLXi2
+        up8PNNGAvsUN9LR16On59LQgzhp6VhbyjlXk/840XtBF/tXj6A06Vlq04Bp6beUI+sqDsu2/3+hm/8QI
+        JjGBFwzKFGZQDpfjcPDfgjEf/TsawAoOcI4rnKGFaR8bVpLkF0Rfu9xnyjytAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btnAdjustment.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1

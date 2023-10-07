@@ -116,6 +116,12 @@
     <Compile Include="Screens\frmChart.Designer.cs">
       <DependentUpon>frmChart.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\frmDiscount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +133,12 @@
     </Compile>
     <Compile Include="Screens\frmInventoryReport.Designer.cs">
       <DependentUpon>frmInventoryReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\frmPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\frmPurchase.Designer.cs">
+      <DependentUpon>frmPurchase.cs</DependentUpon>
     </Compile>
     <Compile Include="Screens\frmQty.cs">
       <SubType>Form</SubType>
@@ -238,6 +250,12 @@
     <Compile Include="Screens\frmStore.Designer.cs">
       <DependentUpon>frmStore.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\frmUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Screens\frmUpdateUser.Designer.cs">
+      <DependentUpon>frmUpdateUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\frmUserAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,11 +317,17 @@
     <EmbeddedResource Include="Screens\frmChart.resx">
       <DependentUpon>frmChart.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Screens\frmCustomer.resx">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screens\frmDiscount.resx">
       <DependentUpon>frmDiscount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\frmInventoryReport.resx">
       <DependentUpon>frmInventoryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\frmPurchase.resx">
+      <DependentUpon>frmPurchase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\frmQty.resx">
       <DependentUpon>frmQty.cs</DependentUpon>
@@ -368,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\frmStore.resx">
       <DependentUpon>frmStore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\frmUpdateUser.resx">
+      <DependentUpon>frmUpdateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\frmUserAccount.resx">
       <DependentUpon>frmUserAccount.cs</DependentUpon>

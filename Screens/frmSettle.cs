@@ -136,7 +136,6 @@ namespace GarmentZone.Screens
                         return;
                     }
 
-
                     for (int i = 0; i < frmpos.dataGridView1.Rows.Count; i++)
                     {
                         con.Open();
@@ -169,6 +168,10 @@ namespace GarmentZone.Screens
                     frmpos.LoadCart();
                     frmpos.txtCustomerName.Clear();
                     frmpos.txtCustomerMobile.Clear();
+                    frmpos.btnNew.Enabled = true;
+                    frmpos.btnDiscount.Enabled = false;
+                    frmpos.btnSettle.Enabled = false;
+                    frmpos.btnCancel.Enabled = false;
                     this.Dispose();
                 }
             }

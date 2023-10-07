@@ -70,6 +70,7 @@ namespace GarmentZone.Screens
                 string sdate = DateTime.Now.ToString("yyyyMMdd");
                 string transno;
                 int count = 0;
+
                 con.Open();
                 cmd = new SqlCommand("select top 1 transno from tblCart where transno like '" + sdate + "%' order by id desc", con);
                 dr = cmd.ExecuteReader();
@@ -112,7 +113,7 @@ namespace GarmentZone.Screens
                 while (dr.Read())
                 {
                     i++;
-                    total += double.Parse(dr["price"].ToString());
+                    total += double.Parse(dr["total"].ToString());
                     disc += double.Parse(dr["disc"].ToString());
                     dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pcode"].ToString() ,dr["pname"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
                     hasRecord = true;
@@ -160,6 +161,8 @@ namespace GarmentZone.Screens
             }
             GetTransNo();
             txtSearch.Enabled = true;
+            btnSearch.Enabled = true;
+            btnPendingOrders.Enabled = false;
             txtSearch.Focus();
         }
 
@@ -299,8 +302,8 @@ namespace GarmentZone.Screens
                     cmd = new SqlCommand("update tblcart set qty = qty + " + int.Parse(txtQty.Text) + " where transno like '" + lblTransno.Text + "' and pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() + "'",con);
                     cmd.ExecuteNonQuery();
                     con.Close();
-
                     LoadCart();
+                    GetCartTotal();
                 }
                 else
                 {
@@ -323,11 +326,15 @@ namespace GarmentZone.Screens
                     cmd.ExecuteNonQuery();
                     con.Close();
                     LoadCart();
+                    GetCartTotal();
                 }
                 else
                 {
-                    MessageBox.Show("Unable to add qty, remaining qty on cart is " + i + "!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    con.Open();
+                    cmd = new SqlCommand("delete from tblCart where id like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", con);
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    LoadCart();
                 }
             }
         }
@@ -431,9 +438,13 @@ namespace GarmentZone.Screens
             }
             else if (e.KeyCode == Keys.F7)
             {
-                btnChangePass_Click(sender, e);
+                btnPendingOrders_Click(sender, e);
             }
             else if (e.KeyCode == Keys.F8)
+            {
+                btnChangePass_Click(sender, e);
+            }
+            else if (e.KeyCode == Keys.F9)
             {
                 txtSearch.SelectionStart = 0;
                 txtSearch.SelectionLength = txtSearch.Text.Length;
@@ -461,6 +472,57 @@ namespace GarmentZone.Screens
         {
             frmChangePassword frm = new frmChangePassword(this);
             frm.ShowDialog();
+        }
+
+        private void btnPendingOrders_Click(object sender, EventArgs e)
+        {
+            LoadPendingSales();
+        }
+
+        public void LoadPendingSales()
+        {
+            try
+            {
+                dataGridView1.Rows.Clear();
+                int i = 0;
+                double total = 0;
+                double disc = 0;
+                double transno = 0;
+
+                con.Open();
+                cmd = new SqlCommand("select c.id, c.transno, c.pcode, p.pname,c.price,c.qty, c.disc,c.total from tblCart as c inner join tblProduct as p on c.pcode = p.pcode where status like 'Pending'", con);
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    i++;
+                    total += double.Parse(dr["total"].ToString());
+                    disc += double.Parse(dr["disc"].ToString());
+                    transno = double.Parse(dr["transno"].ToString());
+                    dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pcode"].ToString(), dr["pname"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));              
+                }
+                dr.Close();
+                con.Close();
+
+                if(transno == 0)
+                {
+                    lblTransno.Text = "00000000000000";
+                    btnNew.Enabled = true;
+                }
+                else
+                {
+                    lblTransno.Text = transno.ToString();
+                    btnNew.Enabled = false;
+                    btnSearch.Enabled = true;
+                }
+                lblSubTotal.Text = total.ToString("#,##0.00");
+                lblDisc.Text = disc.ToString("#,##0.00");
+                GetCartTotal();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.Message, stitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

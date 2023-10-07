@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCustomer = new System.Windows.Forms.Button();
             this.lblUser = new System.Windows.Forms.Label();
             this.btnAdjustment = new System.Windows.Forms.Button();
             this.btnVendor = new System.Windows.Forms.Button();
@@ -94,6 +95,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.panel2.Controls.Add(this.btnCustomer);
             this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.btnAdjustment);
             this.panel2.Controls.Add(this.btnVendor);
@@ -116,6 +118,23 @@
             this.panel2.TabIndex = 3;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
+            // btnCustomer
+            // 
+            this.btnCustomer.FlatAppearance.BorderSize = 0;
+            this.btnCustomer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCustomer.ForeColor = System.Drawing.Color.White;
+            this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
+            this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCustomer.Location = new System.Drawing.Point(12, 540);
+            this.btnCustomer.Name = "btnCustomer";
+            this.btnCustomer.Size = new System.Drawing.Size(202, 31);
+            this.btnCustomer.TabIndex = 15;
+            this.btnCustomer.Text = "  CUSTOMERS";
+            this.btnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
+            // 
             // lblUser
             // 
             this.lblUser.ForeColor = System.Drawing.Color.White;
@@ -135,7 +154,7 @@
             this.btnAdjustment.ForeColor = System.Drawing.Color.White;
             this.btnAdjustment.Image = ((System.Drawing.Image)(resources.GetObject("btnAdjustment.Image")));
             this.btnAdjustment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdjustment.Location = new System.Drawing.Point(12, 317);
+            this.btnAdjustment.Location = new System.Drawing.Point(12, 295);
             this.btnAdjustment.Name = "btnAdjustment";
             this.btnAdjustment.Size = new System.Drawing.Size(202, 35);
             this.btnAdjustment.TabIndex = 13;
@@ -152,7 +171,7 @@
             this.btnVendor.ForeColor = System.Drawing.Color.White;
             this.btnVendor.Image = ((System.Drawing.Image)(resources.GetObject("btnVendor.Image")));
             this.btnVendor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVendor.Location = new System.Drawing.Point(12, 249);
+            this.btnVendor.Location = new System.Drawing.Point(13, 223);
             this.btnVendor.Name = "btnVendor";
             this.btnVendor.Size = new System.Drawing.Size(202, 35);
             this.btnVendor.TabIndex = 12;
@@ -169,7 +188,7 @@
             this.btnSalesHistory.ForeColor = System.Drawing.Color.White;
             this.btnSalesHistory.Image = ((System.Drawing.Image)(resources.GetObject("btnSalesHistory.Image")));
             this.btnSalesHistory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalesHistory.Location = new System.Drawing.Point(10, 462);
+            this.btnSalesHistory.Location = new System.Drawing.Point(10, 438);
             this.btnSalesHistory.Name = "btnSalesHistory";
             this.btnSalesHistory.Size = new System.Drawing.Size(202, 35);
             this.btnSalesHistory.TabIndex = 11;
@@ -202,7 +221,7 @@
             this.btnUser.ForeColor = System.Drawing.Color.White;
             this.btnUser.Image = ((System.Drawing.Image)(resources.GetObject("btnUser.Image")));
             this.btnUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUser.Location = new System.Drawing.Point(10, 539);
+            this.btnUser.Location = new System.Drawing.Point(11, 504);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(202, 35);
             this.btnUser.TabIndex = 9;
@@ -219,7 +238,7 @@
             this.btnSystemSettings.ForeColor = System.Drawing.Color.White;
             this.btnSystemSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSystemSettings.Image")));
             this.btnSystemSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSystemSettings.Location = new System.Drawing.Point(10, 501);
+            this.btnSystemSettings.Location = new System.Drawing.Point(11, 472);
             this.btnSystemSettings.Name = "btnSystemSettings";
             this.btnSystemSettings.Size = new System.Drawing.Size(200, 35);
             this.btnSystemSettings.TabIndex = 8;
@@ -236,7 +255,7 @@
             this.btnRecords.ForeColor = System.Drawing.Color.White;
             this.btnRecords.Image = ((System.Drawing.Image)(resources.GetObject("btnRecords.Image")));
             this.btnRecords.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRecords.Location = new System.Drawing.Point(10, 425);
+            this.btnRecords.Location = new System.Drawing.Point(10, 402);
             this.btnRecords.Name = "btnRecords";
             this.btnRecords.Size = new System.Drawing.Size(202, 35);
             this.btnRecords.TabIndex = 7;
@@ -253,7 +272,7 @@
             this.btnBrand.ForeColor = System.Drawing.Color.White;
             this.btnBrand.Image = ((System.Drawing.Image)(resources.GetObject("btnBrand.Image")));
             this.btnBrand.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBrand.Location = new System.Drawing.Point(12, 387);
+            this.btnBrand.Location = new System.Drawing.Point(12, 367);
             this.btnBrand.Name = "btnBrand";
             this.btnBrand.Size = new System.Drawing.Size(202, 35);
             this.btnBrand.TabIndex = 6;
@@ -270,7 +289,7 @@
             this.btnCategory.ForeColor = System.Drawing.Color.White;
             this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
             this.btnCategory.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCategory.Location = new System.Drawing.Point(12, 351);
+            this.btnCategory.Location = new System.Drawing.Point(12, 331);
             this.btnCategory.Name = "btnCategory";
             this.btnCategory.Size = new System.Drawing.Size(202, 35);
             this.btnCategory.TabIndex = 5;
@@ -287,7 +306,7 @@
             this.btnStockIn.ForeColor = System.Drawing.Color.White;
             this.btnStockIn.Image = ((System.Drawing.Image)(resources.GetObject("btnStockIn.Image")));
             this.btnStockIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockIn.Location = new System.Drawing.Point(11, 282);
+            this.btnStockIn.Location = new System.Drawing.Point(11, 261);
             this.btnStockIn.Name = "btnStockIn";
             this.btnStockIn.Size = new System.Drawing.Size(202, 35);
             this.btnStockIn.TabIndex = 4;
@@ -304,7 +323,7 @@
             this.btnProduct.ForeColor = System.Drawing.Color.White;
             this.btnProduct.Image = ((System.Drawing.Image)(resources.GetObject("btnProduct.Image")));
             this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(12, 215);
+            this.btnProduct.Location = new System.Drawing.Point(12, 188);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(202, 35);
             this.btnProduct.TabIndex = 4;
@@ -321,7 +340,7 @@
             this.btnDashboard.ForeColor = System.Drawing.Color.White;
             this.btnDashboard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashboard.Image")));
             this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.Location = new System.Drawing.Point(13, 180);
+            this.btnDashboard.Location = new System.Drawing.Point(13, 156);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Size = new System.Drawing.Size(201, 35);
             this.btnDashboard.TabIndex = 2;
@@ -332,7 +351,7 @@
             // lblRole
             // 
             this.lblRole.ForeColor = System.Drawing.Color.White;
-            this.lblRole.Location = new System.Drawing.Point(3, 146);
+            this.lblRole.Location = new System.Drawing.Point(3, 116);
             this.lblRole.Name = "lblRole";
             this.lblRole.Size = new System.Drawing.Size(250, 26);
             this.lblRole.TabIndex = 1;
@@ -342,7 +361,7 @@
             // lblName
             // 
             this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(158)))), ((int)(((byte)(132)))));
-            this.lblName.Location = new System.Drawing.Point(0, 119);
+            this.lblName.Location = new System.Drawing.Point(0, 89);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(253, 27);
             this.lblName.TabIndex = 1;
@@ -353,7 +372,7 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(89, 35);
+            this.pictureBox1.Location = new System.Drawing.Point(89, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(80, 80);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -626,16 +645,16 @@
             // 
             // chart1
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chart1.Legends.Add(legend8);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(7, 137);
             this.chart1.Name = "chart1";
-            series8.ChartArea = "ChartArea1";
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.chart1.Series.Add(series8);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(1022, 492);
             this.chart1.TabIndex = 1;
             this.chart1.Text = "chart1";
@@ -734,5 +753,6 @@
         public System.Windows.Forms.Button btnSalesHistory;
         public System.Windows.Forms.Button btnVendor;
         public System.Windows.Forms.Button btnAdjustment;
+        public System.Windows.Forms.Button btnCustomer;
     }
 }

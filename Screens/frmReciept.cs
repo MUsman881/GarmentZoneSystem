@@ -78,7 +78,7 @@ namespace GarmentZone.Screens
                 reportViewer1.LocalReport.DataSources.Add(rptDatasource);
                 reportViewer1.SetDisplayMode(DisplayMode.PrintLayout);
                 reportViewer1.ZoomMode = ZoomMode.Percent;
-                reportViewer1.ZoomPercent = 100;
+                reportViewer1.ZoomPercent = 50;
             }
             catch (Exception ex)
             {

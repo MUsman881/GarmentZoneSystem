@@ -34,7 +34,9 @@ namespace GarmentZone.Screens
         public void LoadRecord()
         {
             dataGridView1.Rows.Clear();
+
             int i = 0;
+
             con.Open();
             if(cboTopSelect.Text == "SORT BY QTY")
             {
@@ -152,6 +154,7 @@ namespace GarmentZone.Screens
         {
             SqlDataAdapter da = new SqlDataAdapter();
             con.Open();
+
             if (cboTopSelect.Text == "SORT BY QTY")
             {
                 da = new SqlDataAdapter("select top 10  pcode, isnull(sum(qty),0) as qty from vwSoldItems where sdate between '" + metroDateTime1.Value.ToString() + "' and '" + metroDateTime2.Value.ToString() + "' and status like 'Sold' group by pcode order by qty desc", con);
@@ -179,6 +182,7 @@ namespace GarmentZone.Screens
                 chart.Series[0].YValueMembers = "total";
             }
             chart.Series[0].IsValueShownAsLabel = true;
+
             if (cboTopSelect.Text == "SORT BY QTY")
             {
                 chart.Series[0].LabelFormat = "{#,##0}";

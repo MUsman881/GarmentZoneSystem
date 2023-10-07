@@ -25,7 +25,7 @@ namespace GarmentZone.Screens
             InitializeComponent();
             con = new SqlConnection(db.MyConnection());
             this.d = d;
-            LoadUser();
+            LoadUsers();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -48,6 +48,7 @@ namespace GarmentZone.Screens
         {
             txtUser.Focus();
         }
+
         private void Clear()
         {
             txtName.Clear();
@@ -57,6 +58,7 @@ namespace GarmentZone.Screens
             cbRole.Text = "";
             txtUser.Focus();
         }
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -132,65 +134,39 @@ namespace GarmentZone.Screens
 
         }
 
-        public void LoadUser()
+        public void LoadUsers()
         {
-            cboUser.Items.Clear();
+            int i = 0;
+            dataGridView1.Rows.Clear();
             con.Open();
-            cmd = new SqlCommand("select * from tblUser", con);
+            cmd = new SqlCommand("select name, username, role, isactive from tblUser where username like '" + txtSearch.Text + "%'", con);
             dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                cboUser.Items.Add(dr["username"].ToString());
+                i++;
+                dataGridView1.Rows.Add(i, dr["name"].ToString(), dr["username"].ToString(), dr["role"].ToString(), dr["isactive"].ToString());
             }
             dr.Close();
             con.Close();
         }
 
-
-        private void cboUser_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                cmd = new SqlCommand("select * from tbluser where username = @username", con);
-                cmd.Parameters.AddWithValue("@username", cboUser.Text);
-                dr = cmd.ExecuteReader();
-                dr.Read();
-                if (dr.HasRows)
-                {
-                    checkBox1.Checked = bool.Parse(dr["isactive"].ToString());
-                }
-                else
-                {
-                    checkBox1.Checked = false;
-                }
-                dr.Close();
-                con.Close();
-            }
-            catch (Exception ex)
-            {
-                con.Close();
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
+            LoadUsers();
         }
 
-        private void btnChange_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+
+            if (colName == "Edit")
             {
-                con.Open();
-                cmd = new SqlCommand("update tbluser set isactive =@isactive where username =@username", con);
-                cmd.Parameters.AddWithValue("@isactive", checkBox1.Checked.ToString());
-                cmd.Parameters.AddWithValue("@username", cboUser.Text);
-                cmd.ExecuteNonQuery();
-                con.Close();
-                MessageBox.Show("Account status has been changed.", "Update Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                checkBox1.Checked = false;
-            }
-            catch (Exception ex)
-            {
-                con.Close();
-                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                frmUpdateUser frm = new frmUpdateUser(this);
+                frm.txtName.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                frm.txtUser.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                frm.cbRole.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                frm.isActive.Checked = bool.Parse(dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString());
+                frm.ShowDialog();
             }
         }
     }

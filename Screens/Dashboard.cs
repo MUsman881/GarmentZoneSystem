@@ -22,16 +22,22 @@ namespace GarmentZone.Screens
         SqlDataReader dr;
         DbConnection db = new DbConnection();
         public string _pass;
+
         public Dashboard()
         {
             InitializeComponent();
             con = new SqlConnection(db.MyConnection());
             NotifyCriticalItems();
+            LoadDashboard();
+            LoadChart();
+        }
+
+        public void LoadDashboard()
+        {
             lblDailySales.Text = db.DailySales().ToString("#,##0.00");
             lblProductline.Text = db.ProductLine().ToString();
             lblStockOnHand.Text = db.StockOnHand().ToString();
             lblCriticalItems.Text = db.CriticalItems().ToString();
-            LoadChart();
         }
 
         public void LoadChart()
@@ -56,7 +62,7 @@ namespace GarmentZone.Screens
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-
+            LoadDashboard();
         }
         
         public void NotifyCriticalItems()
@@ -207,6 +213,24 @@ namespace GarmentZone.Screens
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btnCustomer_Click(object sender, EventArgs e)
+        {
+            frmCustomer f = new frmCustomer();
+            f.TopLevel = false;
+            panel3.Controls.Add(f);
+            f.BringToFront();
+            f.Show();
+        }
+
+        private void btnPurchase_Click(object sender, EventArgs e)
+        {
+            frmPurchase f = new frmPurchase();
+            f.TopLevel = false;
+            panel3.Controls.Add(f);
+            f.BringToFront();
+            f.Show();
         }
     }
 }

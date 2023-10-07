@@ -19,12 +19,15 @@ namespace GarmentZone.Screens
         SqlDataReader dr;
         DbConnection db = new DbConnection(); 
         frmProductList frmProductList = new frmProductList();
+        Dashboard d;
 
         public frmProduct(frmProductList list)
         {
             InitializeComponent(); 
             con = new SqlConnection(db.MyConnection());
             frmProductList = list;
+            Dashboard dashboard = new Dashboard();
+            d = dashboard;
         }
 
         public void LoadCategory()
@@ -104,6 +107,7 @@ namespace GarmentZone.Screens
                 if (MessageBox.Show("Are you sure you want to save this Product?", "Save Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     string bid = "", cid = "", vendorid="";
+
                     con.Open();
                     cmd = new SqlCommand("Select id from tblBrand where brand like '" + cboBrand.Text + "'", con);
                     dr = cmd.ExecuteReader();
@@ -171,6 +175,7 @@ namespace GarmentZone.Screens
                 if (MessageBox.Show("Are you sure you want to update this Product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     string bid = "", cid = "", vendorid="";
+
                     con.Open();
                     cmd = new SqlCommand("Select id from tblBrand where brand like '" + cboBrand.Text + "'", con);
                     dr = cmd.ExecuteReader();
@@ -221,6 +226,7 @@ namespace GarmentZone.Screens
                     Clear();
                     frmProductList.LoadProducts();
                     this.Dispose();
+                    d.LoadDashboard();
                 }
 
 
@@ -236,7 +242,7 @@ namespace GarmentZone.Screens
         {
             if(e.KeyChar == 46)
             {
-                //accept . character
+                //accept .character
             }
             else if (e.KeyChar == 8) {
                 //accept backspace character
